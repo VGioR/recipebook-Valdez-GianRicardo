@@ -1,0 +1,15 @@
+{% extends 'header.html' %}
+
+{% block title %}
+    <title> {{ name }} </title>
+{% endblock %}
+
+{% block body %}
+    <body>
+        <h2> <a href = {{ recipe.link }}> {{ name }} </a> </h2>
+            <ul>
+            {% for ingredient in ingredients %}
+                <li> {{ ingredient.name }} - {{ ingredient.quantity }} </li>
+            {% endfor %}
+            </ul>
+{% endblock %}
