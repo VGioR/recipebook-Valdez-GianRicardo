@@ -7,10 +7,10 @@
 {% block body %} 
     <ul>
     {% for recipe in recipes %}
-        <li> <a href = {{ recipe.link }}> {{ recipe.name }} </a></li>
+        <li> {{ recipe.name }} </a></li>
         <ul> 
-        {% for ingredient in recipe.ingredients %}
-            <li> {{ ingredient.name }} - {{ ingredient.quantity }} </li>
+        {% for ingredient in recipe.ingredients.all %}
+            <li> {{ ingredient.ingredient.name }} - {{ ingredient.quantity }} </li>
         {% endfor %}
         </ul>
     {% endfor %}
