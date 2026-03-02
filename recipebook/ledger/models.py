@@ -9,7 +9,7 @@ class Profile(models.Model):
     bio = models.TextField(blank=True)
 
     def __str__(self):
-        return 'Author: {}'.format(self.name)
+        return self.name
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=50)
