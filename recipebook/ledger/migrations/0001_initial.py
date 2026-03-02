@@ -17,36 +17,107 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Ingredient',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID'
+                    )
+                ),
                 ('name', models.CharField(max_length=50)),
             ],
         ),
         migrations.CreateModel(
             name='Profile',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID'
+                    )
+                ),
                 ('name', models.CharField(max_length=50)),
                 ('bio', models.TextField(blank=True)),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    'user',
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL
+                    )
+                ),
             ],
         ),
         migrations.CreateModel(
             name='Recipe',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID'
+                    )
+                ),
                 ('name', models.CharField(max_length=50)),
-                ('created_on', models.DateTimeField(auto_now_add=True, null=True)),
-                ('updated_on', models.DateTimeField(auto_now=True, null=True)),
-                ('author', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='writer', to='ledger.profile')),
+                (
+                    'created_on',
+                    models.DateTimeField(
+                        auto_now_add=True,
+                        null=True
+                    )
+                ),
+                (
+                    'updated_on',
+                    models.DateTimeField(
+                        auto_now=True,
+                        null=True
+                    )
+                ),
+                (
+                    'author',
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name='writer', to='ledger.profile'
+                    )
+                ),
             ],
         ),
         migrations.CreateModel(
             name='RecipeIngredient',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID'
+                    )
+                ),
                 ('quantity', models.CharField(max_length=50)),
-                ('ingredient', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='recipe', to='ledger.ingredient')),
-                ('recipe', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='ingredients', to='ledger.recipe')),
+                (
+                    'ingredient',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name='recipe',
+                        to='ledger.ingredient'
+                    )
+                ),
+                (
+                    'recipe',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name='ingredients',
+                        to='ledger.recipe'
+                    )
+                ),
             ],
         ),
     ]
