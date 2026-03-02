@@ -3,12 +3,14 @@ from django.http import HttpResponse
 from .models import Recipe
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.contrib.auth.decorators import login_required
 
 def recipe_list(request):
 	recipes = Recipe.objects.all()
 	ctx = {"recipes" : recipes}
 	return render(request, 'recipe_list.html', ctx)
 
+@login_required
 def recipe_detail(request, pk):
     recipe = Recipe.objects.get(pk=pk)
     ctx = {"recipe" : recipe}
