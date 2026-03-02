@@ -19,6 +19,14 @@ class Ingredient(models.Model):
     
 class Recipe(models.Model):
     name = models.CharField(max_length=50)
+    author = models.ForeignKey(
+        Profile,
+        on_delete=models.CASCADE,
+        related_name='writer',
+        null=True
+    )
+    created_on = models.DateTimeField(auto_now_add=True, null=True)
+    updated_on = models.DateTimeField(auto_now=True,  null=True)
 
     def __str__(self):
         return 'Recipe: {}'.format(self.name)
