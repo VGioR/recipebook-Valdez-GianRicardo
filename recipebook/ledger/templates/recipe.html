@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    <h2> {{ recipe.name }} </h2>
+    <h2> {{ recipe.name }} - {{ recipe.author }} </h2>
         <ul>
         {% for ingredient in recipe.ingredients.all %}
             <li> {{ ingredient.ingredient.name }} - {{ ingredient.quantity }} </li>
