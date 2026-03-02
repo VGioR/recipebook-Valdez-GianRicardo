@@ -16,6 +16,7 @@ from pathlib import Path
 
 load_dotenv()
 
+LOGIN_REDIRECT_URL = '/recipes/list'
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend" 
 LOGOUT_REDIRECT_URL = '/accounts/login'
 
