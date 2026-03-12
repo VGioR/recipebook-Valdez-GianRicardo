@@ -17,16 +17,15 @@ def recipe_detail(request, pk):
 
 @login_required
 def recipe_form(request):
-    form = TaskForm()
+    recipe_form = RecipeForm()
     if(request.method == "POST"):
-        form = TaskForm(request.POST, request.FILES)
-        if form.is_valid():
-            recipe = form.save()
+        recipe_form = RecipeForm(request.POST, request.FILES)
+        if recipe_form.is_valid():
+            recipe = recipe_form.save()
             return redirect('ledger:recipe_detail', pk=recipe.pk)
-    ctx = {
-    "recipeform": form,
-    }
-    return render(request, 'recipebook/form.html', ctx)
+    ctx = {"recipe_form": recipe_form,}
+    return render(request, 'recipebook/recipe_form.html', ctx)
+
 @login_required
 def image_form(request, pk):
     image_form = ImageForm()
