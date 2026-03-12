@@ -25,4 +25,3 @@ urlpatterns = [
     path('', include("ledger.urls", namespace="ledger")),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-

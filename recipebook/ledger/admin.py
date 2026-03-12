@@ -1,13 +1,18 @@
 from django.contrib import admin
-from .models import Ingredient, Recipe, RecipeIngredient, Profile, User, RecipeImage
+from .models import (
+    Ingredient, Recipe, RecipeIngredient,
+    Profile, User, RecipeImage
+)
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 
 class RecipeIngredientInline(admin.TabularInline):
     model = RecipeIngredient
 
+
 class RecipeImageInline(admin.TabularInline):
     model = RecipeImage
+
 
 class ProfileInline(admin.StackedInline):
     model = Profile
@@ -35,6 +40,7 @@ class RecipeIngredientAdmin(admin.ModelAdmin):
         }),
     ]
 
+
 class RecipeImageAdmin(admin.ModelAdmin):
     model = RecipeImage
 
@@ -43,8 +49,6 @@ class RecipeImageAdmin(admin.ModelAdmin):
             'fields': ['recipe_image', 'description', 'recipe']
         }),
     ]
-
-
 
 
 admin.site.register(Recipe, RecipeAdmin)
