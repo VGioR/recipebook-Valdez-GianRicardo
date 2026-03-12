@@ -40,7 +40,7 @@ class RecipeImageAdmin(admin.ModelAdmin):
 
     fieldsets = [
         ('Details', {
-            'fields': ['task_image', 'description', 'recipe']
+            'fields': ['recipe_image', 'description', 'recipe']
         }),
     ]
 

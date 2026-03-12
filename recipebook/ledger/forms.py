@@ -1,7 +1,12 @@
 from django import forms
-from .models import Recipe
+from .models import Recipe, RecipeImage
 
-class TaskForm(forms.ModelForm):
+class RecipeForm(forms.ModelForm):
     class Meta:
         model = Recipe
         fields = '__all__'
+
+class ImageForm(forms.ModelForm):
+    class Meta:
+        model = RecipeImage
+        fields = ['recipe_image', 'description']
