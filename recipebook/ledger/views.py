@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Recipe
 from django.contrib.auth.decorators import login_required
-from .forms import TaskForm
+from .forms import RecipeForm, ImageForm
 
 def recipe_list(request):
     recipes = Recipe.objects.all()
@@ -27,3 +27,16 @@ def recipe_form(request):
     "recipeform": form,
     }
     return render(request, 'recipebook/form.html', ctx)
+@login_required
+def image_form(request, pk):
+    image_form = ImageForm()
+    recipe = Recipe.objects.get(pk=pk)
+    if(request.method == "POST"):
+        image_form = ImageForm(request.POST, request.FILES)
+        if image_form.is_valid():
+            image = image_form.save(commit=False)
+            image.recipe = recipe
+            image.save()
+            return redirect('ledger:recipe_detail', pk=image.recipe.pk)
+    ctx = {"image_form": image_form, "recipe": recipe}
+    return render(request, 'recipebook/image_form.html', ctx)
