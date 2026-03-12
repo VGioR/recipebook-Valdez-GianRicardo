@@ -15,7 +15,10 @@
             <li> {{ ingredient.ingredient.name }} - {{ ingredient.quantity }} </li>
         {% endfor %}
         {% for image in recipe.images.all %}
-            <li> <img src="{{ image.task_image.url }}" alt="{{ image.description }}"> </li>
+            <img src="{{ image.recipe_image.url }}" alt="{{ image.description }}">
         {% endfor %}
         </ul>
+        <a href="{% url 'ledger:image_form' recipe.pk %}">Add Image<a>
+        <br>
+        <a href="{% url 'ledger:recipe_list' %}">Back to Recipe List<a>
 {% endblock %}
